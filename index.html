@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./src/bootstrap-5.3.7-dist/css/bootstrap.min.css">
+  <script src="./src/bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Welcome</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 2rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .bottom-text {
+      position: absolute;
+      bottom: 20px;
+      text-align: center;
+    }
+
+    .loader {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "Home.html";
+    }, 3000);
+  </script>
+</head>
+
+<body>
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+  <div class="bottom-text">
+    <div class="loader">Welcome</div>
+    <div class="loader">Designed by Yasmin Muhammad</div>
+  </div>
+</body>
+
+</html>

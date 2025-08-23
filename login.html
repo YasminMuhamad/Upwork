@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="./src/bootstrap-5.3.7-dist/css/bootstrap.min.css">
+    <script src="./src/bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="bg-white">
+        <a class="navbar-brand" href="home.html"><img src="./src/logo.png" alt="Logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </header>
+
+
+    <div class="center-box">
+        <div class="my-box border">
+            <form action="Home.html">
+                <h3>Log in to Upwork</h3>
+
+                <div class="">
+                    <div class="input-group mt-5">
+                        <span class="input-group-text">
+                            <i class="fa-regular fa-user"></i>
+                        </span>
+                        <input type="email" class="form-control" placeholder="Username or Email">
+                        <div class="input-group mt-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-lock"></i>
+                            </span>
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+
+                    </div>
+
+                    <button type="button" class="btn btn-success mt-4">Continue</button>
+
+                    <div class="d-flex align-items-center text-center mt-4">
+                        <hr class="flex-grow-1 m-0" />
+                        <span class="px-2 text-muted">or</span>
+                        <hr class="flex-grow-1 m-0" />
+                    </div>
+
+                    <button type="button" class="btn btn-primary mt-4">
+                        <i class="fa-brands fa-google me-2"></i> Continue with Google
+                    </button>
+
+                    <button type="button" class="btn btn-white mt-4 border-dark">
+                        <i class="fa-brands fa-apple me-2"></i> Continue with Apple
+                    </button>
+
+                    <label class="text-secondary mt-5 d-block text-center">
+                        Don't have an Upwork account?
+                    </label>
+
+                    <button type="button" class="btn btn-outline-success w-50 d-block mx-auto my-4"
+                        onclick="location.href='signup.html'">Sign Up</button>
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+    <footer class="m-4 bg-dark text-center text-white p-5">
+        <small>© 2015 - 2025 Upwork® Global Inc.<a href="#"> • Privacy Policy</a><a href="#"> • Cookie
+                Settings</a></small>
+    </footer>
+    <script src="jquery-3.1.1.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.btn-success').click(function () {
+                let emailInput = $('input[type="email"]').val().trim();
+                let passwordInput = $('input[type="password"]').val().trim();
+
+                let usersData = localStorage.getItem('users');
+                if (!usersData) {
+                    alert('No accounts found. Please sign up first.');
+                    return;
+                }
+
+                let users = JSON.parse(usersData);
+
+                let foundUser = users.find(u => u.email === emailInput && u.password === passwordInput);
+
+                if (foundUser) {
+                    alert('Login successful!');
+                    window.location.href = 'home.html';
+                } else {
+                    alert('Email or password is incorrect.');
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

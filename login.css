@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+  font-family: "neue-montreal-fallback", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+header {
+  position: sticky;
+  width: 100%;
+  background-color: #fff !important;
+  opacity: 1 !important;
+  border-bottom: 1px solid #e7e7e7;
+  top: 0;
+  z-index: 1000;
+}
+
+.center-box {
+  display: flex;
+  justify-content: center;
+}
+
+.my-box {
+  width: 500px;
+  max-width: 95%; /* responsive */
+  border-radius: 5px;
+  padding: 20px;
+  margin: 100px auto 50px auto; /* مركزة في الصفحة */
+}
+
+h3,
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  width: 100%;
+}
+
+footer {
+  border-radius: 10px;
+  height: 20vh;
+}
+
+a,
+footer {
+  color: white !important;
+  text-decoration: none !important;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+@media (max-width:700px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  div.my-box.border {
+    width: 100%;
+    border: none !important;
+  }
+}
+
+@media (max-width: 400px) {
+  small, a{
+    display: block !important;
+  }
+}
