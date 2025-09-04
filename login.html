@@ -12,96 +12,109 @@
 </head>
 
 <body>
-    <header class="bg-white">
+    <header class="bg-white p-3 d-flex align-items-center">
         <a class="navbar-brand" href="home.html"><img src="./src/logo.png" alt="Logo"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </header>
 
-
     <div class="center-box">
-        <div class="my-box border">
-            <form action="Home.html">
-                <h3>Log in to Upwork</h3>
+        <div class="my-box border p-4 rounded">
+            <form id="loginForm" class="needs-validation" novalidate>
+                <h3 class="text-center mb-4">Log in to Upwork</h3>
 
-                <div class="">
-                    <div class="input-group mt-5">
-                        <span class="input-group-text">
-                            <i class="fa-regular fa-user"></i>
-                        </span>
-                        <input type="email" class="form-control" placeholder="Username or Email">
-                        <div class="input-group mt-3">
-                            <span class="input-group-text">
-                                <i class="fa-solid fa-lock"></i>
-                            </span>
-                            <input type="password" class="form-control" placeholder="Password">
-                        </div>
-
-                    </div>
-
-                    <button type="button" class="btn btn-success mt-4">Continue</button>
-
-                    <div class="d-flex align-items-center text-center mt-4">
-                        <hr class="flex-grow-1 m-0" />
-                        <span class="px-2 text-muted">or</span>
-                        <hr class="flex-grow-1 m-0" />
-                    </div>
-
-                    <button type="button" class="btn btn-primary mt-4">
-                        <i class="fa-brands fa-google me-2"></i> Continue with Google
-                    </button>
-
-                    <button type="button" class="btn btn-white mt-4 border-dark">
-                        <i class="fa-brands fa-apple me-2"></i> Continue with Apple
-                    </button>
-
-                    <label class="text-secondary mt-5 d-block text-center">
-                        Don't have an Upwork account?
-                    </label>
-
-                    <button type="button" class="btn btn-outline-success w-50 d-block mx-auto my-4"
-                        onclick="location.href='signup.html'">Sign Up</button>
-
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                    <input type="email" class="form-control" id="emailInput" placeholder="Username or Email" required>
+                    <div class="invalid-feedback">Please enter your email.</div>
                 </div>
 
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" class="form-control" id="passwordInput" placeholder="Password" required>
+                    <div class="invalid-feedback">Please enter your password.</div>
+                </div>
 
+                <button type="submit" class="btn btn-success w-100 mt-3">Continue</button>
+
+                <div class="d-flex align-items-center text-center mt-4">
+                    <hr class="flex-grow-1 m-0" />
+                    <span class="px-2 text-muted">or</span>
+                    <hr class="flex-grow-1 m-0" />
+                </div>
+
+                <button type="button" class="btn btn-primary mt-3 w-100">
+                    <i class="fa-brands fa-google me-2"></i> Continue with Google
+                </button>
+
+                <button type="button" class="btn btn-white mt-3 w-100 border-dark">
+                    <i class="fa-brands fa-apple me-2"></i> Continue with Apple
+                </button>
+
+                <label class="text-secondary mt-4 d-block text-center">
+                    Don't have an Upwork account?
+                </label>
+
+                <button type="button" class="btn btn-outline-success w-50 d-block mx-auto my-3"
+                    onclick="location.href='signup.html'">Sign Up</button>
             </form>
         </div>
     </div>
-    <footer class="m-4 bg-dark text-center text-white p-5">
-        <small>© 2015 - 2025 Upwork® Global Inc.<a href="#"> • Privacy Policy</a><a href="#"> • Cookie
-                Settings</a></small>
-    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="usrPassFailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">User Email or Password is Incorrect!</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="jquery-3.1.1.js"></script>
 
     <script>
         $(document).ready(function () {
-            $('.btn-success').click(function () {
-                let emailInput = $('input[type="email"]').val().trim();
-                let passwordInput = $('input[type="password"]').val().trim();
+            const form = $('#loginForm')[0];
 
-                let usersData = localStorage.getItem('users');
-                if (!usersData) {
-                    alert('No accounts found. Please sign up first.');
+            $('#loginForm').on('submit', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Bootstrap validation
+                if (!form.checkValidity()) {
+                    $(form).addClass('was-validated');
                     return;
                 }
 
-                let users = JSON.parse(usersData);
+                const emailInput = $('#emailInput').val().trim();
+                const passwordInput = $('#passwordInput').val().trim();
+                let usersData = localStorage.getItem('users');
 
-                let foundUser = users.find(u => u.email === emailInput && u.password === passwordInput);
+                if (!usersData) {
+                    new bootstrap.Modal(document.getElementById('usrPassFailModal')).show();
+                    return;
+                }
+
+                const users = JSON.parse(usersData);
+                const foundUser = users.find(u => u.email === emailInput && u.password === passwordInput);
 
                 if (foundUser) {
-                    alert('Login successful!');
                     window.location.href = 'home.html';
                 } else {
-                    alert('Email or password is incorrect.');
+                    new bootstrap.Modal(document.getElementById('usrPassFailModal')).show();
                 }
             });
         });
     </script>
-
 
 </body>
 
