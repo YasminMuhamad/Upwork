@@ -43,99 +43,105 @@
             <hr class="flex-grow-1">
         </div>
 
-        <form id="signupForm" class="was-validated">
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="first_name">First Name</label>
-                    <input type="text" class="form-control mt-2 is-valid" id="first_name" required>
-                </div>
-                <div class="col">
-                    <label for="last_name">Last Name</label>
-                    <input type="text" class="form-control mt-2 is-valid" id="last_name" required>
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Work Email Address</label>
-                <input type="email" class="form-control is-valid" id="exampleInputEmail1" required>
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-
-            <div class="mb-3 position-relative">
-                <label for="inputPassword5" class="form-label">Password</label>
-                <input type="password" id="inputPassword5" class="form-control is-valid"
-                    aria-describedby="passwordHelpBlock" required>
-                <div id="passwordHelpBlock" class="form-text">
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain
-                    spaces, special characters, or emoji.
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label class="mb-2" for="country">Country</label>
-                <select id="country" class="form-select is-valid" aria-label="Arab countries select" required>
-                    <option value="" selected disabled>Choose your country</option>
-                    <option value="DZ">Algeria</option>
-                    <option value="BH">Bahrain</option>
-                    <option value="EG">Egypt</option>
-                    <option value="IQ">Iraq</option>
-                    <option value="JO">Jordan</option>
-                    <option value="KW">Kuwait</option>
-                    <option value="LB">Lebanon</option>
-                    <option value="LY">Libya</option>
-                    <option value="MA">Morocco</option>
-                    <option value="OM">Oman</option>
-                    <option value="PS">Palestine</option>
-                    <option value="QA">Qatar</option>
-                    <option value="SA">Saudi Arabia</option>
-                    <option value="SD">Sudan</option>
-                    <option value="SY">Syria</option>
-                    <option value="TN">Tunisia</option>
-                    <option value="AE">United Arab Emirates</option>
-                    <option value="YE">Yemen</option>
-                </select>
-            </div>
-
-            <div class="form-check mb-2 text-black">
-                <input class="form-check-input" type="checkbox" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    Send me helpful emails to find rewarding work and job leads.
-                </label>
-            </div>
-
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input is-valid" id="validationFormCheck1" required>
-                <label class="form-check-label" for="validationFormCheck1">
-                    Yes, I understand and agree to the <a href="#">Upwork Terms of Service</a>, including the <a
-                        href="#">User
-                        Agreement</a> and <a href="#">Privacy Policy</a>.
-                </label>
-            </div>
-
-            <button type="submit" class="btn btn-success w-50 d-block mx-auto my-4">Create my account</button>
-
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Status</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <form id="signupForm" class="needs-validation" novalidate>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="first_name">First Name</label>
+                        <input type="text" class="form-control mt-2" id="first_name" required>
+                        <div class="valid-feedback">
+                            Looks good!
                         </div>
-                        <div class="modal-body">
-                            Data Submited Succesfully
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary"
-                                onclick="location.href='login.html'">Continue</button>
+                    </div>
+                    <div class="col">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" class="form-control mt-2" id="last_name" required>
+                        <div class="valid-feedback">
+                            Looks good!
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
 
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Work Email Adderess</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" required>
+                    <div id="emailHelp" class="form-text valid-feedback">We'll never share your email with anyone else.</div>
+                </div>
+
+                <div class="mb-3 position-relative">
+                    <label for="inputPassword5" class="form-label">Password</label>
+                    <input type="password" id="inputPassword5" class="form-control"
+                        aria-describedby="passwordHelpBlock" required>
+                    <div id="passwordHelpBlock" class="form-text invalid-feedback">
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain
+                        spaces, special characters, or emoji.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="mb-2" for="country">Country</label>
+                    <select id="country" class="form-select" aria-label="Arab countries select" required>
+                        <option value="" selected disabled>Choose your country</option>
+                        <option value="DZ">Algeria</option>
+                        <option value="BH">Bahrain</option>
+                        <option value="EG">Egypt</option>
+                        <option value="IQ">Iraq</option>
+                        <option value="JO">Jordan</option>
+                        <option value="KW">Kuwait</option>
+                        <option value="LB">Lebanon</option>
+                        <option value="LY">Libya</option>
+                        <option value="MA">Morocco</option>
+                        <option value="OM">Oman</option>
+                        <option value="PS">Palestine</option>
+                        <option value="QA">Qatar</option>
+                        <option value="SA">Saudi Arabia</option>
+                        <option value="SD">Sudan</option>
+                        <option value="SY">Syria</option>
+                        <option value="TN">Tunisia</option>
+                        <option value="AE">United Arab Emirates</option>
+                        <option value="YE">Yemen</option>
+                    </select>
+                </div>
+
+                <div class="form-check mb-2 text-black">
+                    <input class="form-check-input" type="checkbox" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Send me emails with tips on how to find talent that fits my needs.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
+                    <label class="form-check-label" for="validationFormCheck1">
+                        Yes, I understand and agree to the <a href="#">Upwork Terms of Service</a>, including the <a
+                            href="#">User
+                            Agreement</a> and <a href="#">Privacy Policy</a>.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-success w-50 d-block mx-auto my-4">Create my account</button>
+
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Status</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Data Submited Succesfully
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary"
+                                    onclick="location.href='login.html'">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
         <script>
             $(document).ready(function () {
